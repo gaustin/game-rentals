@@ -9,7 +9,9 @@ import Config
 
 config :rentals,
   ecto_repos: [Rentals.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  search_api_url: System.get_env("SEARCH_API_URL"),
+  search_api_key: System.get_env("SEARCH_API_KEY")
 
 # Configures the endpoint
 config :rentals, RentalsWeb.Endpoint,

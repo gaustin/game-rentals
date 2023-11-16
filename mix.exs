@@ -51,7 +51,11 @@ defmodule Rentals.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:mox, "~> 1.1.0"},
+      {:httpoison, "~> 2.2"},
+      {:json, "~> 1.4"},
+      {:exvcr, "~> 0.14", only: :test}
     ]
   end
 
