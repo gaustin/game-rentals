@@ -24,5 +24,4 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 # TODOS
 
-* Remove description field if we can't easily display it nicely.
-*
+* Fix cassettes to remove description

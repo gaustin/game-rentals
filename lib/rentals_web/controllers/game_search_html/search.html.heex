@@ -1,0 +1,26 @@
+<.header>
+  Search Games
+</.header>
+
+<.simple_form :let={f} for={%{}} action={~p"/games/search"} method="get">
+  <.input field={f[:search]} type="text" label="Search" />
+  <:actions>
+    <.button>Search</.button>
+  </:actions>
+</.simple_form>
+
+<%= if @games |> Enum.count() > 0 do %>
+  <.header>
+    Games
+  </.header>
+
+  <.table id="games" rows={@games}>
+    <:col :let={game} label="Image"><img src={game.image} /></:col>
+    <:col :let={game} label="Name"><%= game.name %></:col>
+    <:col :let={game} label="More Detail"><a href={game.site_detail_url}>Details</a></:col>
+  </.table>
+<% else %>
+  <.header>
+    No games found
+  </.header>
+<% end %>

@@ -3,7 +3,7 @@ defmodule Rentals.Search do
   def search(api_url, api_key, query) do
     query_params = %{
       format: :json,
-      name: query,
+      filter: "name:#{query}",
       api_key: api_key,
       field_list: "name,description,site_detail_url,image"
     }
@@ -29,9 +29,8 @@ defmodule Rentals.Search do
   defp build_struct(raw_result) do
     %Rentals.Search.Result{
       name: raw_result["name"],
-      description: raw_result["description"],
       site_detail_url: raw_result["site_detail_url"],
-      image: raw_result["image"]["small_url"]
+      image: raw_result["image"]["thumb_url"]
     }
   end
 end

@@ -64,6 +64,8 @@ defmodule RentalsWeb.Router do
   scope "/", RentalsWeb do
     pipe_through [:browser, :require_authenticated_user]
 
+    get "/games/search", GameSearchController, :search
+
     live_session :require_authenticated_user,
       on_mount: [{RentalsWeb.UserAuth, :ensure_authenticated}] do
       live "/users/settings", UserSettingsLive, :edit
