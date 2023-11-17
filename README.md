@@ -17,6 +17,8 @@ To run tests:
 
 * `SEARCH_API_KEY=$YOUR_KEY_HERE SEARCH_API_URL="https://www.giantbomb.com/api/games/" mix test`
 
+Note: This won't make calls to Giant Bomb unless you remove the cassettes backing the requests.
+
 Expected user flow:
 
 1. User registers
@@ -25,5 +27,3 @@ Expected user flow:
 4. User searches for a game
 5. User selects a title to rent
 6. User can view titles they've rented
-
-Note: This won't make calls to Giant Bomb unless you remove the cassettes backing the requests.
