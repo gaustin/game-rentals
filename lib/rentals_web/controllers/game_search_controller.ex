@@ -4,18 +4,28 @@ defmodule RentalsWeb.GameSearchController do
   def search(conn, params) do
     search_params = Map.get(params, "search")
 
-    {:ok, games} =
-      if is_nil(search_params) do
-        {:ok, []}
+    if is_nil(search_params) do
+      render(conn, "search.html", games: [])
+    else
+      with {:ok, games} <-
+             search_mod(conn).search(
+               Application.get_env(:rentals, :search_api_url),
+               Application.get_env(:rentals, :search_api_key),
+               search_params
+             ) do
+        render(conn, "search.html", games: games)
       else
-        search_mod(conn).search(
-          Application.get_env(:rentals, :search_api_url),
-          Application.get_env(:rentals, :search_api_key),
-          search_params
-        )
-      end
+        {:error, :timeout} ->
+          conn
+          |> put_flash(:error, "Search timed out.")
+          |> redirect(to: ~p"/games/search")
 
-    render(conn, "search.html", games: games)
+        {:error, _reason} ->
+          conn
+          |> put_flash(:error, "Search failed to complete.")
+          |> redirect(to: ~p"/games/search")
+      end
+    end
   end
 
   defp search_mod(conn) do

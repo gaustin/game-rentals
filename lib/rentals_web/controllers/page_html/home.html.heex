@@ -6,15 +6,19 @@
     </h1>
     <p class="mt-4 text-base leading-7 text-zinc-600">
       <%= if @current_user do %>
-        <.link href={~p"/games/search"}>
+        <.link href={~p"/games/search"} style="text-decoration: underline;">
           Search Games!
         </.link>
       <% else %>
-        To search and rent games please<.link href={~p"/users/register"}>
+        To search and rent games please<.link
+          href={~p"/users/register"}
+          style="text-decoration: underline;"
+        >
       Register
-    </.link> or <.link href={
-          ~p"/users/log_in"
-        }>
+    </.link> or <.link
+          href={~p"/users/log_in"}
+          style="text-decoration: underline;"
+        >
       Log in
     </.link>.
       <% end %>

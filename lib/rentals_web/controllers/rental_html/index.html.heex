@@ -1,0 +1,21 @@
+<.header>
+  Listing Rentals
+  <:actions>
+    <.link href={~p"/games/search"}>
+      <.button>New Rental</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="rentals" rows={@rentals}>
+  <:col :let={rental} label="Image"><img src={rental.image} /></:col>
+  <:col :let={rental} label="Name"><%= rental.name %></:col>
+  <:col :let={rental} label="Details">
+    <a href={rental.site_detail_url}>More detail</a>
+  </:col>
+  <:action :let={rental}>
+    <.link href={~p"/rentals/#{rental}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

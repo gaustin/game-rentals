@@ -1,3 +1,3 @@
 defmodule Rentals.Search.Result do
-  defstruct [:name, :site_detail_url, :image]
+  defstruct [:name, :external_id, :site_detail_url, :image]
 end

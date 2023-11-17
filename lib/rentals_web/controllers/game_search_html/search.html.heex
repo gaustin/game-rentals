@@ -18,6 +18,17 @@
     <:col :let={game} label="Image"><img src={game.image} /></:col>
     <:col :let={game} label="Name"><%= game.name %></:col>
     <:col :let={game} label="More Detail"><a href={game.site_detail_url}>Details</a></:col>
+    <:col :let={game} label="Rent">
+      <.simple_form :let={f} for={%{}} action={~p"/rentals"}>
+        <.input field={f[:external_id]} type="hidden" value={game.external_id} />
+        <.input field={f[:image]} type="hidden" value={game.image} />
+        <.input field={f[:site_detail_url]} type="hidden" value={game.site_detail_url} />
+        <.input field={f[:name]} type="hidden" value={game.name} />
+        <:actions>
+          <.button>Rent</.button>
+        </:actions>
+      </.simple_form>
+    </:col>
   </.table>
 <% else %>
   <.header>

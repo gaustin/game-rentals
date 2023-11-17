@@ -5,7 +5,7 @@ defmodule Rentals.Search do
       format: :json,
       filter: "name:#{query}",
       api_key: api_key,
-      field_list: "name,description,site_detail_url,image"
+      field_list: "name,guid,site_detail_url,image"
     }
 
     uri =
@@ -30,7 +30,8 @@ defmodule Rentals.Search do
     %Rentals.Search.Result{
       name: raw_result["name"],
       site_detail_url: raw_result["site_detail_url"],
-      image: raw_result["image"]["thumb_url"]
+      image: raw_result["image"]["thumb_url"],
+      external_id: raw_result["guid"]
     }
   end
 end
