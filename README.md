@@ -27,3 +27,5 @@ Expected user flow:
 4. User searches for a game
 5. User selects a title to rent
 6. User can view titles they've rented
+
+*Warning: There is no pagination for the search and the default page size of Giant Bomb is 100 items. This can lead to timeouts (which are handled somewhat gracefully). So please give the search time to complete and if it times out try again.*
